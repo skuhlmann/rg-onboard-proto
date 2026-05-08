@@ -256,11 +256,15 @@ h2 {
   line-height: 0.86;
 }
 
-.arrival-copy p:last-child {
+.arrival-copy p:not(.micro-label) {
   max-width: 620px;
   margin: 0 auto;
   color: rgba(249, 247, 231, 0.76);
   font-size: 22px;
+}
+
+.arrival-action {
+  margin-top: 24px;
 }
 
 .ambient-layer {

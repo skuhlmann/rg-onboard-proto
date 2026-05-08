@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { useOnboardingStore } from "@/store/onboarding-store";
 
 export function OnboardingEntry() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const initializeFromParams = useOnboardingStore((state) => state.initializeFromParams);
 
@@ -15,10 +15,7 @@ export function OnboardingEntry() {
       email: searchParams.get("email") || undefined,
       session: searchParams.get("session") || undefined
     });
-
-    const timeout = window.setTimeout(() => router.push("/hub"), 900);
-    return () => window.clearTimeout(timeout);
-  }, [initializeFromParams, router, searchParams]);
+  }, [initializeFromParams, searchParams]);
 
   return (
     <main className="arrival-screen room-hub">
@@ -40,6 +37,9 @@ export function OnboardingEntry() {
         <p className="micro-label">Another traveler enters the depths...</p>
         <h1>The Guild Depths</h1>
         <p>Raid Guild is seeking contributors. Step into the halls, form your identity, and choose where to explore.</p>
+        <Link className="primary-action arrival-action" href="/hub">
+          Enter the halls
+        </Link>
       </motion.section>
     </main>
   );

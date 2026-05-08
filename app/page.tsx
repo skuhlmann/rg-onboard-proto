@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
+import OnboardingPage from "./onboarding/page";
 
-export default function Home() {
-  redirect("/onboarding?email=traveler@example.com&session=demo-123");
-}
+export default OnboardingPage;
